@@ -66,12 +66,11 @@ type Tree struct {
 
 var defaultTree Tree
 
-func init() {
-	_ = defaultTree.ParseKernel()
-}
-
 func DefaultTree() (t *Tree) {
-	d := defaultTree;	// Deliberate copy - caller can modify
+	if defaultTree.RootNode == nil {
+		_ = defaultTree.ParseKernel()
+	}
+	d := defaultTree // Deliberate copy - caller can modify
 	if d.RootNode != nil && len(d.RootNode.Properties) != 0 &&
 		len(d.RootNode.Children) != 0 {
 		return &d
