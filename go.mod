@@ -1,3 +1,3 @@
-module github.com/platinasystems/fdt
+module github.com/leon-auradine/fdt
 
 go 1.13
